@@ -5,7 +5,8 @@ TEST_DIR := test
 CXXFLAGS = -std=c++14 -Wall -Wextra -O2
 LDLIBS = -lgmp -lgmpxx -lsodium -I$(SRC_DIR)
 
-TESTS = $(BUILD_DIR)/hash_prime_test
+TEST_SRCS = $(wildcard $(TEST_DIR)/*.cpp)
+TESTS = $(patsubst $(TEST_DIR)/%.cpp, $(BUILD_DIR)/%, $(TEST_SRCS))
 
 default: compile
 compile: $(BUILD_DIR) $(TESTS)
