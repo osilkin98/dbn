@@ -58,10 +58,6 @@ int main()
 	std::cout << "Data 1 hash:\t" << std::to_string(my_data_1_hash) << std::endl;
 	std::cout << "Data 2 hash:\t" << std::to_string(my_data_2_hash) << std::endl;
 	
-	assert(my_data_0_hash != dbn::hash_failure);
-	assert(my_data_1_hash != dbn::hash_failure);
-	assert(my_data_2_hash != dbn::hash_failure);
-	
 	std::cout << "Finding primes." << std::endl;
 	bigint my_data_0_prime = dbn::map_hash_to_prime(my_data_0_hash);
 	bigint my_data_1_prime = dbn::map_hash_to_prime(my_data_1_hash);

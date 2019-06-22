@@ -33,8 +33,6 @@ namespace dbn {
 	using bigint_raw = mpz_t;
 	using hash_key = unsigned char[crypto_shorthash_siphash24_KEYBYTES];
 	
-	constexpr static uint32_t hash_failure = -1;
-	
 	uint32_t hash(
 		const unsigned char * start,
 		const size_t size,

@@ -36,8 +36,6 @@ dbn::uint32_t dbn::hash(
 		data_hash, start, size, key
 	);
 	
-	if (not success) return dbn::hash_failure;
-	
 	const uint32_t first_half = data_hash[0] | (data_hash[1] >> 8) |
 		(data_hash[2] >> 16) | (data_hash[3] >> 24);
 	const uint32_t second_half = data_hash[4] | (data_hash[5] >> 8) |
