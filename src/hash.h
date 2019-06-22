@@ -33,13 +33,33 @@ namespace dbn {
 	using bigint_raw = mpz_t;
 	using hash_key = unsigned char[crypto_shorthash_siphash24_KEYBYTES];
 	
-	uint32_t hash(
+	hash_type hash(
 		const unsigned char * start,
 		const size_t size,
 		hash_key key
 	) noexcept;
 	
-	bigint map_hash_to_prime(const uint32_t obj_hash) noexcept;
+	bigint map_hash_to_prime(const hash_type obj_hash) noexcept;
+	
+	template <class T>
+	hash_type hl_hash(const T& obj, hash_key key) noexcept;
+	
+	template <class T>
+	bigint phash(const T& obj, hash_key key) noexcept;
+}
+
+template <class T>
+dbn::hash_type dbn::hl_hash(const T& obj, hash_key key) noexcept
+{
+	const unsigned char* obj_ptr = reinterpret_cast<const unsigned char*>(&obj);
+	
+	return dbn::hash(obj_ptr, sizeof(T), key);
+}
+
+template <class T>
+dbn::bigint dbn::phash(const T& obj, hash_key key) noexcept
+{
+	return hl_hash(dbn::hl_hash(obj, key));
 }
 
 #endif

@@ -41,19 +41,12 @@ int main()
 	unsigned long long my_data_2 = 0xCAFED00DFACEFEED;
 	
 	assert(my_data_0 == my_data_2);
-	
-	std::cout << "Making pointers." << std::endl;
-	const unsigned char * my_data_0_ptr =
-		reinterpret_cast<const unsigned char *>(&my_data_0);
-	const unsigned char * my_data_1_ptr =
-		reinterpret_cast<const unsigned char *>(&my_data_1);
-	const unsigned char * my_data_2_ptr =
-		reinterpret_cast<const unsigned char *>(&my_data_2);
+	assert(my_data_0 != my_data_1);
 	
 	std::cout << "Hashing." << std::endl;
-	hash_type my_data_0_hash = dbn::hash(my_data_0_ptr, sizeof(my_data_0), key);
-	hash_type my_data_1_hash = dbn::hash(my_data_1_ptr, sizeof(my_data_1), key);
-	hash_type my_data_2_hash = dbn::hash(my_data_2_ptr, sizeof(my_data_2), key);
+	hash_type my_data_0_hash = dbn::hl_hash(my_data_0, key);
+	hash_type my_data_1_hash = dbn::hl_hash(my_data_1, key);
+	hash_type my_data_2_hash = dbn::hl_hash(my_data_2, key);
 	std::cout << "Data 0 hash:\t" << std::to_string(my_data_0_hash) << std::endl;
 	std::cout << "Data 1 hash:\t" << std::to_string(my_data_1_hash) << std::endl;
 	std::cout << "Data 2 hash:\t" << std::to_string(my_data_2_hash) << std::endl;

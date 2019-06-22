@@ -24,7 +24,7 @@ extern "C" {
 
 using namespace dbn;
 
-dbn::uint32_t dbn::hash(
+dbn::hash_type dbn::hash(
 	const unsigned char * const start,
 	const dbn::size_t size,
 	dbn::hash_key key
@@ -42,7 +42,7 @@ dbn::uint32_t dbn::hash(
 	return first_half ^ second_half;
 }
 
-bigint dbn::map_hash_to_prime(const dbn::uint32_t obj_hash) noexcept
+bigint dbn::map_hash_to_prime(const dbn::hash_type obj_hash) noexcept
 {
 	bigint curprime = 2;
 	
