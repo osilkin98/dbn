@@ -53,7 +53,6 @@ int main()
 	hash_type my_data_0_hash = dbn::hash(my_data_0_ptr, sizeof(my_data_0), key);
 	hash_type my_data_1_hash = dbn::hash(my_data_1_ptr, sizeof(my_data_1), key);
 	hash_type my_data_2_hash = dbn::hash(my_data_2_ptr, sizeof(my_data_2), key);
-	
 	std::cout << "Data 0 hash:\t" << std::to_string(my_data_0_hash) << std::endl;
 	std::cout << "Data 1 hash:\t" << std::to_string(my_data_1_hash) << std::endl;
 	std::cout << "Data 2 hash:\t" << std::to_string(my_data_2_hash) << std::endl;
@@ -62,8 +61,7 @@ int main()
 	bigint my_data_0_prime = dbn::map_hash_to_prime(my_data_0_hash);
 	bigint my_data_1_prime = dbn::map_hash_to_prime(my_data_1_hash);
 	bigint my_data_2_prime = dbn::map_hash_to_prime(my_data_2_hash);
-	
-	assert(not db.search(my_data_0_prime));
-	assert(not db.search(my_data_1_prime));
-	assert(not db.search(my_data_2_prime));
+	std::cout << "Data 0 prime:\t" << my_data_0_prime.get_str() << std::endl;
+	std::cout << "Data 1 prime:\t" << my_data_1_prime.get_str() << std::endl;
+	std::cout << "Data 2 prime:\t" << my_data_2_prime.get_str() << std::endl;
 }

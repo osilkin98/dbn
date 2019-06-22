@@ -32,9 +32,7 @@ dbn::uint32_t dbn::hash(
 {
 	unsigned char data_hash[crypto_shorthash_BYTES];
 	
-	const int success = crypto_shorthash(
-		data_hash, start, size, key
-	);
+	crypto_shorthash(data_hash, start, size, key);
 	
 	const uint32_t first_half = data_hash[0] | (data_hash[1] >> 8) |
 		(data_hash[2] >> 16) | (data_hash[3] >> 24);

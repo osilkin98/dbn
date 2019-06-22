@@ -5,8 +5,10 @@ TEST_DIR := test
 CXXFLAGS = -std=c++14 -Wall -Wextra -O2
 LDLIBS = -lgmp -lgmpxx -lsodium -I$(SRC_DIR)
 
+TESTS = $(BUILD_DIR)/hash_prime_test
+
 default: compile
-compile: $(BUILD_DIR) $(BUILD_DIR)/basic_test
+compile: $(BUILD_DIR) $(TESTS)
 
 debug: CXXFLAGS += -g
 debug: compile
