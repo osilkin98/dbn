@@ -9,10 +9,15 @@ TEST_SRCS = $(wildcard $(TEST_DIR)/*.cpp)
 TESTS = $(patsubst $(TEST_DIR)/%.cpp, $(BUILD_DIR)/%, $(TEST_SRCS))
 
 default: compile
+
 compile: $(BUILD_DIR) $(TESTS)
 
 debug: CXXFLAGS += -g
 debug: compile
+
+test: compile
+	./$(BUILD_DIR)/*test
+
 
 clean: $(BUILD_DIR)
 	rm -rf $(BUILD_DIR)/*
